@@ -6,11 +6,11 @@
 <title>8 months with you</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Nunito:wght@400;600&family=Noto+Sans+Devanagari:wght@500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#120a1f; --ink:#fff7f0; --muted:#cbb8d9; --pink:#ff7eb6; --gold:#ffd36e;
-    --card:rgba(30,18,50,.92);
+    --bg:#0e1233; --ink:#f5f2ff; --muted:#b7bfe8; --pink:#c5b0ff; --gold:#bfe3ff;
+    --card:rgba(22,28,72,.94);
   }
   *{box-sizing:border-box;margin:0}
   html,body{height:100%;background:var(--bg);color:var(--ink);overflow:hidden;
@@ -23,17 +23,17 @@
   h1{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-style:italic;
     font-size:clamp(2rem,8vw,3.4rem);line-height:1.1}
   .sub{color:var(--muted);margin-top:6px;font-size:1rem}
-  button{margin-top:16px;font:600 1rem 'Nunito',sans-serif;color:#2a1238;background:var(--gold);
+  button{margin-top:16px;font:600 1rem 'Nunito',sans-serif;color:#1a1f4a;background:var(--gold);
     border:0;border-radius:999px;padding:12px 26px;cursor:pointer}
   button:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
   .note{position:fixed;inset:0;display:grid;place-items:center;padding:24px;
-    background:rgba(10,5,18,.6);opacity:0;pointer-events:none;transition:opacity .5s}
+    background:rgba(8,10,34,.82);z-index:8;opacity:0;pointer-events:none;transition:opacity .5s}
   .note.open{opacity:1;pointer-events:auto}
   .note .card{max-width:440px;width:100%;max-height:85vh;overflow:auto;background:var(--card);
-    border:1px solid rgba(255,126,182,.35);border-radius:18px;padding:28px 24px;
+    border:1px solid rgba(197,176,255,.4);border-radius:18px;padding:28px 24px;
     transform:scale(.95);transition:transform .5s}
   .note.open .card{transform:none}
-  .card h2{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:500;font-size:1.9rem;margin-bottom:12px}
+  .card h2{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:500;font-size:1.5rem;color:var(--pink);margin-bottom:12px}
   .card p{line-height:1.65;margin-bottom:12px;max-width:60ch}
   .card .sig{color:var(--gold);margin-top:6px}
   .hint{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));left:0;right:0;text-align:center;
@@ -41,7 +41,7 @@
   .hint.show{opacity:.8}
   .ask{position:fixed;left:50%;top:40%;width:min(88vw,520px);text-align:center;z-index:5;
     transform:translate(-50%,-50%) scale(.85);opacity:0;pointer-events:none;
-    transition:opacity .9s ease,transform .9s cubic-bezier(.2,1.3,.4,1);text-shadow:0 0 18px rgba(18,10,31,.95),0 0 6px rgba(18,10,31,.9)}
+    transition:opacity .9s ease,transform .9s cubic-bezier(.2,1.3,.4,1);text-shadow:0 0 18px rgba(14,18,51,.95),0 0 6px rgba(14,18,51,.9)}
   .ask.show{opacity:1;transform:translate(-50%,-50%) scale(1)}
   .ask .q{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:500;
     font-size:clamp(1.9rem,8vw,3.2rem);line-height:1.1}
@@ -49,14 +49,38 @@
   .ask .btns{display:flex;gap:14px;justify-content:center;align-items:center;margin-top:12px;min-height:56px}
   .ask.show button{pointer-events:auto}
   .ask button{margin:0;transition:transform .25s ease}
-  #yes{background:var(--pink);color:#2a1238}
+  #yes{background:var(--pink);color:#1a1f4a}
   #no{background:transparent;color:var(--ink);border:2px solid var(--pink)}
-  .fly{position:fixed;bottom:-30px;z-index:9;pointer-events:none;animation:up var(--d,4s) ease-in forwards}
+  .fly{position:fixed;bottom:-30px;z-index:7;pointer-events:none;animation:up var(--d,4s) ease-in forwards}
   @keyframes up{to{transform:translateY(-110vh) rotate(var(--r,20deg));opacity:.2}}
+  body{background:radial-gradient(60% 40% at 18% 14%,rgba(167,139,250,.30),transparent 70%),
+    radial-gradient(55% 42% at 86% 82%,rgba(96,165,250,.26),transparent 70%),
+    radial-gradient(ellipse at 50% 30%,#262b6e 0%,#141846 55%,#0a0d2a 100%)}
+  .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .alt{background:transparent;color:var(--ink);border:2px solid var(--pink)}
+  #mus{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));right:12px;z-index:6;margin:0;
+    padding:8px 12px;font-size:1rem;background:rgba(255,255,255,.12);color:var(--ink)}
+  .big{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:1.55rem;line-height:1.35;min-height:4.2em}
+  .feather{width:84px;height:146px;margin:0 auto 2px;transform-origin:50% 100%;animation:sway 4.5s ease-in-out infinite}
+  @keyframes sway{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+  .dev{font-family:'Noto Sans Devanagari','Nirmala UI',system-ui,sans-serif;font-weight:500;font-size:1.4rem;text-align:center;color:var(--gold);margin-bottom:6px}
+  @media (prefers-reduced-motion:reduce){.feather{animation:none}}
+  .cnt{color:var(--muted);font-size:.9rem}
 </style>
 </head>
 <body>
 <canvas id="c" aria-label="A portrait made of dots"></canvas>
+<button id="mus" aria-label="Music on or off">🔇</button>
+<div class="note" id="rs" role="dialog" aria-modal="true" aria-labelledby="rt">
+  <div class="card">
+    <div class="feather" id="feather" aria-hidden="true" hidden></div>
+    <p class="dev" id="rdev" hidden>राधे राधे 🪷</p>
+    <h2 id="rt">Reasons I love you</h2>
+    <p class="big" id="rtext"></p>
+    <p class="cnt" id="rcnt"></p>
+    <div class="row"><button id="rnext">Next 💜</button><button id="rclose" class="alt">Close</button></div>
+  </div>
+</div>
 <div class="hint" id="hint">touch the dots</div>
 
 <div class="ask" id="ask" aria-live="polite">
@@ -68,7 +92,7 @@
 <div class="caption" id="cap">
   <h1 id="title"></h1>
   <p class="sub" id="sub"></p>
-  <button id="open">Read my note</button>
+  <div class="row"><button id="open">Read my note</button><button id="reasonsBtn" class="alt">Reasons I love you 💌</button></div>
 </div>
 
 <div class="note" id="note" role="dialog" aria-modal="true" aria-labelledby="nt">
@@ -87,26 +111,43 @@ const CONFIG = {
   herName: "Parvati",
   yourName: "apka hathi 🐘",
   subtitle: "8 months of us",
+  reasons: [
+    { text: "Aapki muskaan mere poore din ko roshan kar deti hai." },
+    { text: "Aap meri bakwaas jokes par bhi hans deti hain." },
+    { text: "Aapke saath main safe aur ghar jaisa mehsoos karta hu." },
+    { text: "Aapki aankhein. Main unmein kho jata hu." },
+    { text: "Aap ordinary dino ko bhi khaas bana deti hain." },
+    { rk: true, text: "Krishna ke liye Radha sirf pyaar nahi, unki aatma thi. Main aapko apni Radha ki tarah dekhta hu." },
+    { rk: true, text: "Jaise Krishna ne apni Radha ke liye bansuri bajayi, main aapki har khushi ke liye jo bhi ho sakta hai wo karunga. Aapki har wish, har khwahish poori karne ke liye poori koshish karunga." },
+    { rk: true, text: "Aur agar kabhi aapko papa jaisa pyaar, fikar aur sahara chahiye ho, toh wo bhi main dunga. Aap kabhi akeli nahi hain, main hamesha aapke saath khada hu." },
+    { rk: true, text: "Radhe Radhe 💙 Hamara pyaar bhi unki tarah shaant, sachcha aur lamba chale." }
+  ],
   question: "Can we go for a date?",
   questionHint: "pretty please 🌸",
   yesTitle: "Yay! 🎉",
   yesLine: "Best answer ever. I'll plan something special 💕",
-  noteTitle: "Eight months, and counting",
+  noteTitle: "Aapke 8 mahine 💙",
   noteLines: [
-    "Eight months ago I didn't know how much brighter ordinary days could get.",
-    "Thank you for every laugh, every late-night talk, and every time you made me feel at home.",
-    "Here's to many more months with you."
+    "Parvati, aaj hum 8 mahine ke ho gaye. Aapke saath har din thoda aur khaas lagta hai.",
+    "Ek baat dil se kehni hai: kabhi kabhi main bhool jata hu. Kabhi koi baat, kabhi koi cheez, kabhi sahi waqt par kuch kehna.",
+    "Lekin uska matlab ye bilkul nahi hai ki aapki value nahi hai. Mujhe hai, aur bahut hai.",
+    "Bhoolna meri aadat ki kamzori hai, mere pyaar ki nahi. Jab main kuch bhool jata hu, wo meri dhyaan ki kami hoti hai, aapki ahmiyat ki nahi. Aap meri zindagi ke sabse zaroori logon mein se hain.",
+    "Main poori koshish karunga ki aapko kabhi aisa na lage ki aap meri list mein peeche hain. Aap mere liye hamesha aage hain.",
+    "Mujhe samajhne ke liye, mujhe jhelne ke liye, aur har baar maaf karne ke liye, bahut bahut shukriya. Aane wale mahine aur bhi pyaare honge."
   ],
   invert: false                     // set true only if the face looks like a photo negative
 };
 /* ====================== */
 
 const cv = document.getElementById('c'), ctx = cv.getContext('2d');
-const PALETTE = ['#ffffff','#ffffff','#ff7eb6','#ffd36e','#7ee0ff','#b69cff'];
+const PALETTE = ['#ffffff','#ffffff','#c5b0ff','#9fc2ff','#8fe0ff','#ffc8e6'];
 let W, H, DPR, particles = [], img = null, started = 0;
 const ptr = {x:-999,y:-999,on:false};
 const portrait = {cx:0, cy:0, a:200, b:100};
 let asked = false;
+let stars = [], sparks = [];
+function makeStars(){ stars = Array.from({length:Math.round(W*H/9000)},()=>({x:Math.random()*W,y:Math.random()*H,
+  r:Math.random()*1.3+.3,ph:Math.random()*6.28,sp:.6+Math.random()*1.6})); }
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 if(!matchMedia('(pointer: coarse)').matches) document.getElementById('hint').textContent='click the dots';
@@ -115,11 +156,11 @@ document.getElementById('sub').textContent = CONFIG.subtitle;
 document.getElementById('nt').textContent = CONFIG.noteTitle;
 document.getElementById('body').innerHTML = CONFIG.noteLines.map(t => {
   const p = document.createElement('p'); p.textContent = t; return p.outerHTML; }).join('');
-document.getElementById('sig').textContent = "Forever yours, " + CONFIG.yourName;
+document.getElementById('sig').textContent = "Hamesha, " + CONFIG.yourName;
 
 function size(){
   DPR = Math.min(window.devicePixelRatio || 1, 2);
-  W = innerWidth; H = innerHeight;
+  W = innerWidth; H = innerHeight; makeStars();
   cv.width = W*DPR; cv.height = H*DPR;
   ctx.setTransform(DPR,0,0,DPR,0,0);
 }
@@ -159,7 +200,11 @@ function frame(now){
   if(!started) started = now;
   const el = now-started;
   ctx.clearRect(0,0,W,H);
-  const cxm=W/2, cym=H/2;
+  ctx.fillStyle='#fff';
+  for(const s of stars){ ctx.globalAlpha=.15+.6*(.5+.5*Math.sin(now/1000*s.sp+s.ph));
+    ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,6.2832); ctx.fill(); }
+  ctx.globalAlpha=1;
+  const shimmer = el>4500;
   for(const p of particles){
     if(el>=p.delay){
       // spring toward target, with a slight swirl while travelling
@@ -173,8 +218,18 @@ function frame(now){
       p.vx*=.86; p.vy*=.86; p.x+=p.vx; p.y+=p.vy;
     }
     ctx.fillStyle=p.c;
-    ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.2832); ctx.fill();
+    if(shimmer){ const tw=.5+.5*Math.sin(now/650+p.jit*24); ctx.globalAlpha=.84+.16*tw;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r*(.95+.15*tw),0,6.2832); }
+    else { ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.2832); }
+    ctx.fill();
   }
+  ctx.globalAlpha=1;
+  for(let i=sparks.length-1;i>=0;i--){ const s=sparks[i]; s.life-=.025; if(s.life<=0){ sparks.splice(i,1); continue; }
+    s.x+=s.vx; s.y+=s.vy; s.vy+=.03; ctx.globalAlpha=s.life; ctx.fillStyle=s.c;
+    const r=s.r*s.life; ctx.beginPath(); ctx.moveTo(s.x,s.y-r*2); ctx.lineTo(s.x+r*.5,s.y-r*.5); ctx.lineTo(s.x+r*2,s.y);
+    ctx.lineTo(s.x+r*.5,s.y+r*.5); ctx.lineTo(s.x,s.y+r*2); ctx.lineTo(s.x-r*.5,s.y+r*.5); ctx.lineTo(s.x-r*2,s.y);
+    ctx.lineTo(s.x-r*.5,s.y-r*.5); ctx.closePath(); ctx.fill(); }
+  ctx.globalAlpha=1;
   requestAnimationFrame(frame);
 }
 
@@ -182,6 +237,8 @@ function pointer(e){
   const t = e.touches ? e.touches[0] : e;
   if(!t){ ptr.on=false; return; }
   ptr.x=t.clientX; ptr.y=t.clientY; ptr.on=true;
+  for(let i=0;i<2&&sparks.length<90;i++) sparks.push({x:ptr.x+(Math.random()-.5)*14,y:ptr.y+(Math.random()-.5)*14,
+    vx:(Math.random()-.5)*1.2,vy:-Math.random()*1.2,life:1,r:1.2+Math.random()*2.2,c:PALETTE[(Math.random()*PALETTE.length)|0]});
 }
 addEventListener('mousemove',pointer);
 addEventListener('touchstart',pointer,{passive:true});
@@ -192,7 +249,7 @@ addEventListener('resize',()=>{ size(); build(true); if(asked){ clearCentre(true
 
 /* UI */
 const cap=document.getElementById('cap'), note=document.getElementById('note'), hint=document.getElementById('hint');
-document.getElementById('open').onclick=()=>{ note.classList.add('open'); document.getElementById('close').focus(); };
+document.getElementById('open').onclick=()=>{ note.classList.add('open'); document.getElementById('close').focus({preventScroll:true}); };
 document.getElementById('close').onclick=()=>note.classList.remove('open');
 note.addEventListener('click',e=>{ if(e.target===note) note.classList.remove('open'); });
 addEventListener('keydown',e=>{ if(e.key==='Escape') note.classList.remove('open'); });
@@ -239,9 +296,8 @@ no.addEventListener('pointerenter',dodge);
 no.addEventListener('pointerdown',dodge);
 no.addEventListener('click',dodge);
 
-function floaters(){
-  const set=['💖','💕','✨','🌸','💗','🎉'];
-  for(let i=0;i<45;i++){
+function floaters(set=['💖','💕','✨','🌸','💗','🎉'], n=45){
+  for(let i=0;i<n;i++){
     const f=document.createElement('div'); f.className='fly';
     f.textContent=set[(Math.random()*set.length)|0];
     f.style.left=(Math.random()*100)+'vw'; f.style.fontSize=(18+Math.random()*26)+'px';
@@ -255,8 +311,91 @@ yes.addEventListener('click',()=>{
   document.getElementById('qs').textContent = CONFIG.yesLine;
   document.getElementById('btns').style.display='none'; no.style.display='none';
   for(const p of particles){ p.vx+=(Math.random()-.5)*26; p.vy+=(Math.random()-.5)*26; }
-  floaters();
+  floaters(['💖','💕','✨','🌸','🪷','🦚'],50);
 });
+
+/* ---- Reasons I love you ---- */
+const rs=document.getElementById('rs'), rtext=document.getElementById('rtext'), rcnt=document.getElementById('rcnt'), rnext=document.getElementById('rnext');
+let ri=0, rkShown=false;
+(function(){ /* peacock feather drawn in code */
+  let barbs='';
+  for(let k=0;k<38;k++){
+    const y=190-k*3.4, len=8+26*Math.sin(Math.PI*Math.min(1,(190-y)/150));
+    for(const s of [-1,1]) barbs+='<line x1="60" y1="'+y.toFixed(1)+'" x2="'+(60+s*len).toFixed(1)+'" y2="'+(y-len*.55).toFixed(1)+'"/>';
+  }
+  document.getElementById('feather').innerHTML=
+   '<svg viewBox="0 0 120 220" width="100%" height="100%"><defs><radialGradient id="eye" cx="50%" cy="45%" r="55%">'+
+   '<stop offset="0" stop-color="#2a1f8f"/><stop offset=".45" stop-color="#1f6fd0"/><stop offset=".8" stop-color="#2fb5a0"/><stop offset="1" stop-color="#c9b6ff"/></radialGradient></defs>'+
+   '<path d="M60 218 Q55 150 60 70" stroke="#e6d7b0" stroke-width="2.2" fill="none" stroke-linecap="round"/>'+
+   '<g stroke="#6fe0c8" stroke-width="1.1" stroke-linecap="round" opacity=".85">'+barbs+'</g>'+
+   '<ellipse cx="60" cy="68" rx="24" ry="33" fill="#5fd9c2" opacity=".9"/>'+
+   '<ellipse cx="60" cy="68" rx="19" ry="27" fill="url(#eye)"/>'+
+   '<ellipse cx="60" cy="68" rx="8" ry="12" fill="#0f1650"/>'+
+   '<ellipse cx="57" cy="62" rx="2.4" ry="4" fill="#fff" opacity=".7"/></svg>';
+})();
+function renderR(){
+  const R=CONFIG.reasons, n=R.length, item=R[ri]||null, rk=!!(item&&item.rk);
+  document.getElementById('feather').hidden=!rk; document.getElementById('rdev').hidden=!rk;
+  rs.querySelector('.card').scrollTop=0;
+  if(item){
+    rtext.textContent=item.text; rcnt.textContent=(ri+1)+' of '+n; rnext.textContent='Agla 💜';
+    if(rk && !rkShown){ rkShown=true; floaters(['🪷','🌸','🦚','✨','💙'],18); }
+  } else {
+    rtext.textContent="...aur aise hazaaron reasons hain, jo main aapko aamne-saamne bataunga 🥰";
+    rcnt.textContent=''; rnext.textContent='Phir se';
+  }
+}
+document.getElementById('reasonsBtn').onclick=()=>{ ri=0; rkShown=false; renderR(); rs.classList.add('open'); rnext.focus({preventScroll:true}); };
+rnext.onclick=()=>{ if(ri>CONFIG.reasons.length-1){ ri=0; rkShown=false; } else ri++; renderR(); };
+document.getElementById('rclose').onclick=()=>rs.classList.remove('open');
+rs.addEventListener('click',e=>{ if(e.target===rs) rs.classList.remove('open'); });
+addEventListener('keydown',e=>{ if(e.key==='Escape') rs.classList.remove('open'); });
+
+/* ---- Soft music (made live with the Web Audio API, no file needed) ---- */
+const musBtn=document.getElementById('mus');
+let ac=null, master=null, timer=null, nextT=0, stepN=0, musicOn=false, userMuted=false;
+const CHORDS=[[60,64,67,71],[57,60,64,67],[53,57,60,64],[55,59,62,64]];
+const PAT=[0,1,2,3,2,1,2,3];
+const mf=m=>440*Math.pow(2,(m-69)/12);
+function tone(m,t,len,vol){
+  const o=ac.createOscillator(), g=ac.createGain();
+  o.type='sine'; o.frequency.value=mf(m);
+  g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(vol,t+.03);
+  g.gain.exponentialRampToValueAtTime(.0001,t+len);
+  o.connect(g); g.connect(master); o.start(t); o.stop(t+len+.05);
+}
+function tick(){
+  while(nextT < ac.currentTime+1){
+    const chord=CHORDS[Math.floor(stepN/8)%4], i=stepN%8;
+    if(i===0) tone(chord[0]-12,nextT,3.6,.07);
+    tone(chord[PAT[i]]+12,nextT,1.7,.11);
+    nextT+=.44; stepN++;
+  }
+}
+function musicStart(){
+  try{
+    if(!ac){
+      ac=new (window.AudioContext||window.webkitAudioContext)();
+      master=ac.createGain(); master.gain.value=0;
+      const d=ac.createDelay(); d.delayTime.value=.4; const fb=ac.createGain(); fb.gain.value=.38;
+      master.connect(ac.destination); master.connect(d); d.connect(fb); fb.connect(d); d.connect(ac.destination);
+    }
+    ac.resume(); nextT=ac.currentTime+.1;
+    master.gain.cancelScheduledValues(ac.currentTime); master.gain.setValueAtTime(master.gain.value,ac.currentTime);
+    master.gain.linearRampToValueAtTime(.55,ac.currentTime+1.5);
+    clearInterval(timer); timer=setInterval(tick,250); tick();
+    musicOn=true; musBtn.textContent='🔊';
+  }catch(e){ musBtn.style.display='none'; }
+}
+function musicStop(){
+  if(!ac) return;
+  master.gain.cancelScheduledValues(ac.currentTime); master.gain.setValueAtTime(master.gain.value,ac.currentTime);
+  master.gain.linearRampToValueAtTime(0,ac.currentTime+.6);
+  clearInterval(timer); musicOn=false; musBtn.textContent='🔇';
+}
+musBtn.addEventListener('click',()=>{ if(musicOn){ userMuted=true; musicStop(); } else { userMuted=false; musicStart(); } });
+/* the first touch anywhere starts the music (browsers need a tap before sound) */
+addEventListener('pointerdown',e=>{ if(!musicOn && !userMuted && !e.target.closest('#mus')) musicStart(); },{once:false});
 
 function start(){
   size(); build(false);
